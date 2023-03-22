@@ -33,7 +33,7 @@ form {
 }
 
 label {
-    font-size: 30px;
+    font-size: 25px;
     width: 45%;
 }
 
@@ -55,14 +55,30 @@ h2 {
     font-size: 200px;
 }
 
+th {
+    color: white;
+    font-size: 20px;
+    padding-bottom: 2%;
+}
+
+td {
+    color: white;
+    font-size: 20px;
+    padding: 1%;
+    border: 2px solid white;
+}
+
+
+
 
 #container-main {
-    display: flex;
+    display: grid;
     height: 100vh;
 }
 
 #container-input-dados {
-    width: 50%;
+    display: flex;
+    width: 100%;
 }
 
 #up, #down {
@@ -76,20 +92,25 @@ h2 {
 #quant-commits {
     display: flex;
     justify-content: center;
+    align-items: end;
     font-size: 20px;
     color: white;
+    text-align: end;
 
 }
 
 #down {
     display: flex;
     justify-content: center;
+    color: white;
+    font-size: 200px;
 }
 
 #dados {
     text-align: center;
-    width: 50%;
+    width: 100%;
     padding-top: 5%;
+    margin: auto;
 }
 
 
@@ -112,7 +133,16 @@ h2 {
     align-items: center;
     width: 100%;
     color: white;
+    padding-top: 10%;
 }
+
+#quant_total {
+    display: grid;
+    justify-content: center;
+    width: 50%;
+}
+
+
 
 /*@media screen and (max-height: 768px) {
     #quadro {

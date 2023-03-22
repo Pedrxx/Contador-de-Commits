@@ -49,7 +49,7 @@ function contarCommits(commits) {
     const h2 = document.createElement("h2");
     h2.innerHTML = commitsPorDiaArray.length;
     down.appendChild(h2);
-    mostrarTelaCommits(commitsPorDiaArray);
+    mostarTabelaCommits(commitsPorDiaArray);
 }
 
 function mostrarTelaCommits(commits) {
@@ -66,5 +66,28 @@ function mostrarTelaCommits(commits) {
         dados.appendChild(p);
     });
    
+}
+
+function mostarTabelaCommits(commits ) {
+    const table = document.querySelector("#dados");
+    commits.forEach(element => {
+        const row = document.createElement('tr');
+        const dataCell = document.createElement('td');
+        const horaCell = document.createElement('td');
+        const nomeCell = document.createElement('td');
+        const msgCell = document.createElement('td');
+        
+        nomeCell.innerHTML = element.autor;
+        dataCell.innerHTML = element.data.substring(8,10)+ "/"+ element.data.substring(5,7)+ "/" + element.data.substring(0,4);
+        horaCell.innerHTML = element.data.substring(11,16);
+        msgCell.innerHTML = element.mensagem;
+
+        row.appendChild(nomeCell);
+        row.appendChild(dataCell);
+        row.appendChild(horaCell);
+        row.appendChild(msgCell);
+
+        table.appendChild(row);
+    });
 }
 
