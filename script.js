@@ -20,25 +20,17 @@ function buscarCommits(repositorio, dataInicial, dataFinal) {
         });
     console.log(new Date());
 }
-function buscaLogin() {
-    const url = `https://api.github.com/repos/${repositorio}/commits?since=${dataInicial}&until=${dataFinal}`;
-    console.log(url);
-    fetch(url).
-        then(response => response.json()).
-        then(repoData => {
-            const ownerLogin = repoData.owner.login;
-            const commitMessages = commitsData.map(commit => commit.commit.message);
-        });
-}
 
 function contarCommits(commits) {
     const commitsPorDia = {};
     commits.forEach(element => {
         const dataCommit = element.commit.author.date
+        const autorCommit = element.commit.author.name
+        const msgCommit = element.commit.message
         if (commitsPorDia[dataCommit]) {
             commitsPorDia[dataCommit].quantidade++;
         } else {
-            commitsPorDia[dataCommit] = { quantidade: 1, data: dataCommit };
+            commitsPorDia[dataCommit] = { quantidade: 1, data: dataCommit, autor: autorCommit, mensagem: msgCommit };
         }
 
     });
@@ -46,7 +38,10 @@ function contarCommits(commits) {
     console.log(commitsPorDia);
     
     const commitsPorDiaArray = Object.keys(commitsPorDia).map(dataCommit => {
-        return { data: dataCommit, quantidade: commitsPorDia[dataCommit].quantidade };
+        return { data: dataCommit,
+                 quantidade: commitsPorDia[dataCommit].quantidade,
+                 autor: commitsPorDia[dataCommit].autor,
+                 mensagem: commitsPorDia[dataCommit].mensagem };
     });
     //console.log(commitsPorDiaArray.length)
     document.getElementById("down").innerHTML = " ";
@@ -62,12 +57,12 @@ function mostrarTelaCommits(commits) {
     const dados = document.querySelector('#dados');
     commits.forEach(element => {
         const p = document.createElement("p");
-        p.innerHTML = "Commit Feito em: " 
+        p.innerHTML = "Commit Feito por: "+ element.autor +"<br> em: " 
         + element.data.substring(8,10)+"/"
         + element.data.substring(5,7)+"/"
         + element.data.substring(0,4) + "<br> Horario: "
-        + element.data.substring(11,16) +  
-        "<br> Quantidade: " + element.quantidade + "<br></br>";
+        + element.data.substring(11,16) + "<br>" 
+        + "Mensagem: "+element.mensagem + "<br></br>";
         dados.appendChild(p);
     });
    
