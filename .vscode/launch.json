@@ -2,6 +2,13 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"type": "java",
+			"name": "ContadorDeCommitsApplication",
+			"request": "launch",
+			"mainClass": "com.pedro.contadordecommits.ContadorDeCommitsApplication",
+			"projectName": "contador-de-commits"
+		},
+		{
 			"type": "totvs_language_debug",
 			"request": "launch",
 			"name": "TOTVS Language Debug",

@@ -80,7 +80,7 @@ function mostarTabelaCommits(commits ) {
         nomeCell.innerHTML = element.autor;
         dataCell.innerHTML = element.data.substring(8,10)+ "/"+ element.data.substring(5,7)+ "/" + element.data.substring(0,4);
         horaCell.innerHTML = element.data.substring(11,16);
-        msgCell.innerHTML = element.mensagem;
+        msgCell.innerHTML = element.mensagem.substring(0,30) + "<br>" + element.mensagem.substring(30,70) + "<br>" + element.mensagem.substring(70,100) + "<br>";
 
         row.appendChild(nomeCell);
         row.appendChild(dataCell);
